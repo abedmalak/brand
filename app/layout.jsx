@@ -3,7 +3,7 @@ import Nav from '@components/Nav'
 
 export const metadata = {
     title: 'BrandCode',
-    description: 'Brand Identity Design System',
+    description: 'Brand Code',
 }
 
 const RootLayout = ({children}) => {

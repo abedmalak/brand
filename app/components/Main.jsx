@@ -8,10 +8,7 @@ const Main = () => {
           Brand<span className='text-[#000000]'>code </span>
           </h1>
           <h3 className='py-2 text-gray-700'>Communication & Media Agency</h3>
-          <div className='flex items-center justify-between max-w-[330px] m-auto py-4'>
 
-           
-          </div>
         </div>
       </div>
     </div>

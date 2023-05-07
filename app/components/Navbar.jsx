@@ -1,11 +1,9 @@
 'use client'
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { AiOutlineClose, AiOutlineDown, AiOutlineMail, AiOutlineMenu } from 'react-icons/ai';
-// import { useRouter } from 'next/router';
-import NavLogo from '/public/assets/images/logo.png'
+import { AiOutlineClose, AiOutlineDown, AiOutlineMail, AiOutlineMenu, AiOutlineInstagram, AiOutlineLinkedin } from 'react-icons/ai';
+import NavLogo from '/public/assets/images/logo.png';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -39,8 +37,8 @@ const Navbar = () => {
       }
     >
       <div className='flex justify-between items-center w-full h-full px-2 2xl:px-16'>
-        <div>
-        <Link href='/'>
+        <div className='ml-5'>
+          <Link href='/'>
             <Image
               src={NavLogo}
               alt='/'
@@ -48,71 +46,74 @@ const Navbar = () => {
               height='200'
               className='cursor-pointer'
             />
-        </Link>
+          </Link>
         </div>
-        <div>
-          <ul style={{ color: `${linkColor}` }} className='hidden md:flex'>
-            <li className='ml-10 text-sm uppercase hover:border-b'>
+        <div className='flex items-center justify-end w-full'>
+          <ul style={{ color: `${linkColor}` }} className='hidden md:flex items-center justify-center w-full'>
+            <li className='ml-10 text-sm uppercase group hover:border-b hover:text-[#ff2c5c]'>
               <Link href='/'>Home</Link>
+              <div className='w-full h-[2px] bg-[#ff2c5c] mt-1 group-hover:block hidden'></div>
             </li>
-            <li className='ml-10 text-sm uppercase hover:border-b'>
+            <li className='ml-10 text-sm uppercase group hover:border-b hover:text-[#ff2c5c]'>
               <Link href='/#about'>About</Link>
+              <div className='w-full h-[2px] bg-[#ff2c5c] mt-1 group-hover:block hidden'></div>
             </li>
-            <li className='ml-10 text-sm uppercase hover:border-b'>
+            <li className='ml-10 text-sm uppercase group hover:border-b hover:text-[#ff2c5c]'>
               <Link href='/#'>Services</Link>
+              <div className='w-full h-[2px] bg-[#ff2c5c] mt-1 group-hover:block hidden'></div>
             </li>
             
-          {/* Dropdown Icon */}
-          <li className='ml-10 text-sm uppercase relative group hover:border-b cursor-pointer'>
-  <div 
-   onMouseEnter={() => setShowDropdown(true)}
-  onClick={() => setShowDropdown(!showDropdown)}>
-    Pages <AiOutlineDown size={12} />
-  </div>
-  <div
-    className={`${
-      showDropdown ? 'block' : 'hidden'
-    } absolute left-0 mt-1 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10`}
-    onMouseLeave={() => setShowDropdown(false)}
-  >
-    <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-      <Link href="/clients">
-        <div
-          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
-          role="menuitem"
-          onClick={() => setShowDropdown(false)}
-        >
-          Clients
-        </div>
-      </Link>
-      <Link href="/portfolio">
-        <div
-          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
-          role="menuitem"
-          onClick={() => setShowDropdown(false)}
-        >
-          Portfolio
-        </div>
-      </Link>
-    </div>
-  </div>
-</li>
-
-            <li className='ml-10 text-sm uppercase hover:border-b'>
+            {/* Dropdown Icon */}
+            <li className='ml-10 text-sm uppercase relative group hover:border-b hover:text-[#ff2c5c] cursor-pointer'>
+              <div 
+                onMouseEnter={() => setShowDropdown(true)}
+                onClick={() => setShowDropdown(!showDropdown)}>
+                Pages <AiOutlineDown size={12} />
+              </div>
+              <div
+                className={`${
+                  showDropdown ? 'block' : 'hidden'
+                } absolute left-0 mt-1 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10`}
+                onMouseLeave={() => setShowDropdown(false)}           >
+                <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                  <Link href="/clients">
+                    <div
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+                      role="menuitem"
+                      onClick={() => setShowDropdown(false)}
+                    >
+                      Clients
+                    </div>
+                  </Link>
+                  <Link href="/portfolio">
+                    <div
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+                      role="menuitem"
+                      onClick={() => setShowDropdown(false)}
+                    >
+                      Portfolio
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </li>
+    
+            <li className='ml-10 text-sm uppercase group hover:border-b hover:text-[#ff2c5c]'>
               <Link href='/#contact'>Contact</Link>
+              <div className='w-full h-[2px] bg-[#ff2c5c] mt-1 group-hover:block hidden'></div>
             </li>
           </ul>
           {/* Hamburger Icon */}
-          <div
-            style={{ color: `${linkColor}` }}
-            onClick={handleNav}
-            className='md:hidden'
-          >
-            <AiOutlineMenu size={25} />
+          <div className='md:hidden'>
+            <AiOutlineMenu size={25} onClick={handleNav} style={{ color: `${linkColor}` }} />
+          </div>
+          <div className='hidden md:flex items-center space-x-3 ml-5'>
+            <AiOutlineInstagram size={25} className='hover:text-[#ff2c5c]' />
+            <AiOutlineLinkedin size={25} className='hover:text-[#ff2c5c]' />
           </div>
         </div>
       </div>
-
+    
       {/* Mobile Menu */}
       {/* Overlay */}
       <div
@@ -164,41 +165,45 @@ const Navbar = () => {
                 </li>
               </Link>
               <Link href='/#services'>
-                <li onClick={() => setNav(false)} className='py-4 text-sm'>
-                  Services
-                </li>
-              </Link>
-              <Link href='/#projects'>
-                <li onClick={() => setNav(false)} className='py-4 text-sm'>
-                  Pages
-                </li>
-              </Link>
-              <Link href='/#contact'>
-                <li onClick={() => setNav(false)} className='py-4 text-sm'>
-                  Contact
-                </li>
-              </Link>
-            </ul>
-            <div className='pt-20 text-align-center'>
-              <p className='uppercase tracking-widest text-[#3b5998]'>
-                Let&#39;s Connect
-              </p>
-              <div className='flex items-center justify-between my-4 w-full sm:w-[80%]'>
-                <Link href='/#contact'>
-                  <div
-                    onClick={() => setNav(!nav)}
-                    className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300'
-                  >
-                    <AiOutlineMail />
-                  </div>
-                </Link>
+                <li onClick={() => setNav(false)} className='py-4 text               sm'>
+              Services
+            </li>
+          </Link>
+          <Link href='/#pages'>
+            <li onClick={() => setNav(false)} className='py-4 text-sm'>
+              Pages
+            </li>
+          </Link>
+          <Link href='/#contact'>
+            <li onClick={() => setNav(false)} className='py-4 text-sm'>
+              Contact
+            </li>
+          </Link>
+        </ul>
+        <div className='pt-20 text-align-center'>
+          <p className='uppercase tracking-widest text-[#3b5998]'>
+            Let&#39;s Connect
+          </p>
+          <div className='flex items-center justify-between my-4 w-full sm:w-[80%]'>
+            <Link href='/#contact'>
+              <div
+                onClick={() => setNav(!nav)}
+                className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300'
+              >
+                <AiOutlineMail />
               </div>
-            </div>
+            </Link>
+            <AiOutlineInstagram size={25} className='hover:text-[#ff2c5c]' />
+            <AiOutlineLinkedin size={25} className='hover:text-[#ff2c5c]' />
           </div>
         </div>
       </div>
     </div>
-  );
+  </div>
+</div>
+);
 };
 
 export default Navbar;
+    
+             

@@ -3,15 +3,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { AiOutlineClose, AiOutlineMail, AiOutlineMenu } from 'react-icons/ai';
+import { AiOutlineClose, AiOutlineDown, AiOutlineMail, AiOutlineMenu } from 'react-icons/ai';
 // import { useRouter } from 'next/router';
-import NavLogo from '../public/assets/images/logo.png'
+import NavLogo from '/public/assets/images/logo.png'
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [shadow, setShadow] = useState(false);
-  const [navBg, setNavBg] = useState('#ecf0f3');
-  const [linkColor, setLinkColor] = useState('#1f2937');
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [navBg, setNavBg] = useState('#fafafa');
+  const [linkColor, setLinkColor] = useState('#ff2c5c');
 
   const handleNav = () => {
     setNav(!nav);
@@ -58,12 +59,43 @@ const Navbar = () => {
             <li className='ml-10 text-sm uppercase hover:border-b'>
               <Link href='/#skills'>Skills</Link>
             </li>
-            <li className='ml-10 text-sm uppercase hover:border-b'>
-              <Link href='/#projects'>Projects</Link>
-            </li>
-            <li className='ml-10 text-sm uppercase hover:border-b'>
-              <Link href='/resume'>Resume</Link>
-            </li>
+            
+          {/* Dropdown Icon */}
+          <li className='ml-10 text-sm uppercase relative group hover:border-b cursor-pointer'>
+  <div 
+   onMouseEnter={() => setShowDropdown(true)}
+  onClick={() => setShowDropdown(!showDropdown)}>
+    Pages <AiOutlineDown size={12} />
+  </div>
+  <div
+    className={`${
+      showDropdown ? 'block' : 'hidden'
+    } absolute left-0 mt-1 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10`}
+    onMouseLeave={() => setShowDropdown(false)}
+  >
+    <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+      <Link href="/clients">
+        <div
+          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+          role="menuitem"
+          onClick={() => setShowDropdown(false)}
+        >
+          Clients
+        </div>
+      </Link>
+      <Link href="/portfolio">
+        <div
+          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+          role="menuitem"
+          onClick={() => setShowDropdown(false)}
+        >
+          Portfolio
+        </div>
+      </Link>
+    </div>
+  </div>
+</li>
+
             <li className='ml-10 text-sm uppercase hover:border-b'>
               <Link href='/#contact'>Contact</Link>
             </li>
@@ -136,7 +168,7 @@ const Navbar = () => {
               </Link>
               <Link href='/#projects'>
                 <li onClick={() => setNav(false)} className='py-4 text-sm'>
-                  Projects
+                  Pages
                 </li>
               </Link>
               <Link href='/#contact'>

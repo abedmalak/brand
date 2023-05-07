@@ -1,5 +1,5 @@
 import '@styles/globals.css'
-import Nav from '@components/Nav'
+import Navbar from '@app/components/Navbar'
 
 export const metadata = {
     title: 'BrandCode',
@@ -15,7 +15,9 @@ const RootLayout = ({children}) => {
             </div>
 
             <main className='app'>
-                <Nav/>
+            <div className="bg-primary-black overflow-hidden">
+    <Navbar />
+    </div>
                 {children}
             </main>
         </body>

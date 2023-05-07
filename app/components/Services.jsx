@@ -1,7 +1,7 @@
 'use client'
 import { useState } from "react";
 import Image from "next/image";
-
+import pic from '/public/assets/images/location.png'
 const pillsData = [
   {
     id: 1,
@@ -15,7 +15,7 @@ const pillsData = [
       },
       {
         id: 2,
-        title: 'Brand Guidelines Development',
+        title: 'Brand Guidelines',
         description: 'This is the description for Card 1.2.',
         image: '/public/assets/icons/icondemo.png', // Replace with the path to your card image
       },
@@ -41,7 +41,7 @@ const pillsData = [
       },
       // Add more cards as needed
     ],
-    image: '/icon2.png', // Replace with the path to your icon
+    image: '/public/assets/images/location.png', // Replace with the path to your icon
   },
   // Add more pills as needed
 ];
